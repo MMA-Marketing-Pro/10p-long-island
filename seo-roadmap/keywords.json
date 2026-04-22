@@ -1,0 +1,88 @@
+{
+  "client": "10th Planet Long Island",
+  "slug": "10p-long-island",
+  "primaryCity": "Hauppauge",
+  "state": "NY",
+  "county": "Suffolk County",
+  "metro": "Long Island",
+  "neighborhoods": [
+    { "name": "Hauppauge", "slug": "hauppauge", "note": "Primary location" },
+    { "name": "Smithtown", "slug": "smithtown", "note": "5 min north — high-income township" },
+    { "name": "Commack", "slug": "commack", "note": "5 min west — dense residential" },
+    { "name": "Islandia", "slug": "islandia", "note": "Adjacent south" },
+    { "name": "Central Islip", "slug": "central-islip", "note": "10 min south" },
+    { "name": "Brentwood", "slug": "brentwood", "note": "15 min south — large population base" },
+    { "name": "Ronkonkoma", "slug": "ronkonkoma", "note": "12 min east — LIRR hub" },
+    { "name": "Holbrook", "slug": "holbrook", "note": "15 min southeast" },
+    { "name": "Bohemia", "slug": "bohemia", "note": "15 min south" },
+    { "name": "Lake Grove", "slug": "lake-grove", "note": "18 min northeast — Smith Haven Mall area" },
+    { "name": "Nesconset", "slug": "nesconset", "note": "8 min north" },
+    { "name": "Kings Park", "slug": "kings-park", "note": "12 min north" },
+    { "name": "East Northport", "slug": "east-northport", "note": "15 min northwest" },
+    { "name": "Huntington Station", "slug": "huntington-station", "note": "18 min west — large catchment" },
+    { "name": "Deer Park", "slug": "deer-park", "note": "15 min southwest" },
+    { "name": "Bay Shore", "slug": "bay-shore", "note": "18 min south" },
+    { "name": "Stony Brook", "slug": "stony-brook", "note": "20 min northeast — university crowd" },
+    { "name": "Islip", "slug": "islip", "note": "15 min south" }
+  ],
+  "services": [
+    { "name": "No-Gi Jiu-Jitsu", "slug": "no-gi-jiu-jitsu", "type": "core" },
+    { "name": "Adult Brazilian Jiu-Jitsu", "slug": "adult-brazilian-jiu-jitsu", "type": "core" },
+    { "name": "Kids Jiu-Jitsu", "slug": "kids-jiu-jitsu", "type": "core" },
+    { "name": "Beginner BJJ Classes", "slug": "beginner-bjj-classes", "type": "funnel" },
+    { "name": "MMA Classes", "slug": "mma-classes", "type": "core" },
+    { "name": "Masters 35+ BJJ", "slug": "masters-35-bjj", "type": "core" },
+    { "name": "Private BJJ Training", "slug": "private-bjj-training", "type": "premium" }
+  ],
+  "personas": [
+    { "name": "Beginners", "slug": "beginners", "focus": "adults with zero experience" },
+    { "name": "Women", "slug": "women", "focus": "women-friendly classes + self-defense angle" },
+    { "name": "Kids Ages 5-7", "slug": "kids-ages-5-7", "focus": "littles — parents searching" },
+    { "name": "Kids Ages 8-12", "slug": "kids-ages-8-12", "focus": "tweens — parents searching" },
+    { "name": "Teens", "slug": "teens", "focus": "high-school age, self-defense + discipline" },
+    { "name": "Adults Over 40", "slug": "adults-over-40", "focus": "Masters mindset, longevity" },
+    { "name": "Competitors", "slug": "competitors", "focus": "IBJJF, ADCC, NAGA bound" }
+  ],
+  "glossaryTerms": [
+    { "term": "What Is 10th Planet Jiu-Jitsu", "slug": "what-is-10th-planet-jiu-jitsu" },
+    { "term": "What Is No-Gi Jiu-Jitsu", "slug": "what-is-no-gi-jiu-jitsu" },
+    { "term": "Gi vs No-Gi Jiu-Jitsu", "slug": "gi-vs-no-gi-jiu-jitsu" },
+    { "term": "BJJ Belt Ranks Explained", "slug": "bjj-belt-ranks-explained" },
+    { "term": "How Long Does It Take To Get A BJJ Blue Belt", "slug": "how-long-bjj-blue-belt" },
+    { "term": "What To Wear To Your First BJJ Class", "slug": "what-to-wear-first-bjj-class" },
+    { "term": "What Is A Rash Guard", "slug": "what-is-a-rash-guard" },
+    { "term": "What Is Rubber Guard", "slug": "what-is-rubber-guard" },
+    { "term": "What Is The Twister", "slug": "what-is-the-twister" },
+    { "term": "What Is Lockdown", "slug": "what-is-lockdown" },
+    { "term": "Jiu-Jitsu Etiquette For Beginners", "slug": "jiu-jitsu-etiquette-beginners" },
+    { "term": "Benefits Of Jiu-Jitsu For Adults", "slug": "benefits-of-jiu-jitsu-for-adults" },
+    { "term": "Benefits Of Jiu-Jitsu For Kids", "slug": "benefits-of-jiu-jitsu-for-kids" },
+    { "term": "Cold Plunge Benefits For BJJ Recovery", "slug": "cold-plunge-benefits-bjj-recovery" },
+    { "term": "Infrared Sauna Benefits For Athletes", "slug": "infrared-sauna-benefits-athletes" }
+  ],
+  "comparisons": [
+    { "title": "No-Gi Jiu-Jitsu vs Gi Jiu-Jitsu", "slug": "no-gi-vs-gi-jiu-jitsu" },
+    { "title": "BJJ vs Wrestling For Self-Defense", "slug": "bjj-vs-wrestling-self-defense" },
+    { "title": "BJJ vs Judo", "slug": "bjj-vs-judo" },
+    { "title": "10th Planet System vs Traditional BJJ", "slug": "10th-planet-vs-traditional-bjj" },
+    { "title": "BJJ vs Muay Thai For Beginners", "slug": "bjj-vs-muay-thai-beginners" },
+    { "title": "MMA vs BJJ — Which Should You Start With", "slug": "mma-vs-bjj-which-to-start" }
+  ],
+  "examples": [
+    { "title": "Basic BJJ Guard Positions Explained", "slug": "basic-bjj-guard-positions" },
+    { "title": "10 Essential BJJ Submissions For White Belts", "slug": "essential-bjj-submissions-white-belts" },
+    { "title": "Top 5 No-Gi Sweeps For Beginners", "slug": "top-no-gi-sweeps-beginners" },
+    { "title": "Best BJJ Warm-Ups Before Class", "slug": "best-bjj-warm-ups" },
+    { "title": "BJJ Conditioning Drills You Can Do At Home", "slug": "bjj-conditioning-drills-home" },
+    { "title": "How To Escape Mount — A Beginner's Guide", "slug": "how-to-escape-mount-beginner" }
+  ],
+  "curation": [
+    { "title": "Best BJJ Gym On Long Island", "slug": "best-bjj-gym-long-island" },
+    { "title": "Best No-Gi Jiu-Jitsu Academy In Suffolk County", "slug": "best-no-gi-suffolk-county" },
+    { "title": "Best Kids Martial Arts In Hauppauge", "slug": "best-kids-martial-arts-hauppauge" },
+    { "title": "Best Place To Start Jiu-Jitsu In Long Island", "slug": "start-jiu-jitsu-long-island" },
+    { "title": "Best BJJ Gym Near Smithtown", "slug": "best-bjj-near-smithtown" },
+    { "title": "Best MMA Gym In Central Long Island", "slug": "best-mma-central-long-island" }
+  ],
+  "estimatedTotalPages": 160
+}

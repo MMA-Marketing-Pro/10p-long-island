@@ -1,0 +1,63 @@
+{
+  "slug": "10p-long-island",
+  "originalColors": ["#188BF6", "#001C53", "#0E5DC0", "#FFFFFF", "#000000"],
+  "validatedAgainstLogoAndNavbar": {
+    "logoColors": ["#188BF6", "#FFFFFF"],
+    "navbarColors": ["#0A0E1A", "#FFFFFF", "#188BF6"],
+    "primaryCTAColor": "#188BF6",
+    "droppedFalsePositives": [
+      {
+        "color": "#37ca37",
+        "reason": "Declared as CSS var --primary on GoHighLevel funnel template but never used on rendered pages. Not in logo, navbar, or any visible element."
+      },
+      {
+        "color": "#4B5563",
+        "reason": "Generic Tailwind-ish gray from body text color — a neutral, not a brand color."
+      },
+      {
+        "color": "#607179",
+        "reason": "One-off contact form field border color — not a brand color."
+      }
+    ],
+    "retainedColors": ["#188BF6 (electric blue — primary accent)", "#001C53 (deep navy — footer/section bg)", "#0E5DC0 (hover blue)", "#FFFFFF (text/logo negative space)", "#000000 / near-black (body background)"]
+  },
+  "colorAudit": {
+    "contrastIssues": [
+      "#188BF6 button with white text = ~3.9:1 — fails WCAG AA for normal text but passes for large text (18px+ bold or 24px+). Fine for CTA buttons, not fine for inline body links on light backgrounds. Fix: use #0E5DC0 as the text-on-light variant (already present in their palette)."
+    ],
+    "harmonyType": "monochromatic-cool (navy + electric blue are within same hue family)",
+    "hierarchyStatus": "strong — one electric accent, dark substrate, white text. Classic performance-brand palette.",
+    "saturationNotes": "#188BF6 is highly saturated (~90%) — works perfectly as the 'one electric accent' in performance-athletic style. Keep as-is.",
+    "backgroundAssessment": "Current site alternates pure black (#000) and deep navy (#001C53) as section backgrounds. Too much contrast jump between sections — unified obsidian substrate reads more premium."
+  },
+  "correctedPalette": {
+    "--bg": "#0A0E1A",
+    "--bg-card": "#141929",
+    "--bg-elevated": "#1C2338",
+    "--text-primary": "#F5F7FA",
+    "--text-muted": "#8B95A8",
+    "--border": "#242B40",
+    "--accent": "#188BF6",
+    "--accent-hover": "#0E5DC0",
+    "--accent-subtle": "rgba(24, 139, 246, 0.10)",
+    "--accent-glow": "rgba(24, 139, 246, 0.35)"
+  },
+  "mode": "dark",
+  "colorShifts": [
+    "Unified section backgrounds from two values (#000 + #001C53) to one obsidian substrate #0A0E1A — eliminates the jarring contrast jump between sections and gives the site a calmer, more premium read.",
+    "Added --bg-card #141929 and --bg-elevated #1C2338 for proper surface hierarchy (instead of flat one-color sections).",
+    "Kept --accent exactly as their signature #188BF6 — this is their identity and performance-athletic uses one electric accent.",
+    "Kept --accent-hover exactly as their existing #0E5DC0.",
+    "Added --accent-glow (low-opacity blue) for CTA halo / hover illumination effects used in performance-athletic style.",
+    "text-primary shifted from pure #FFFFFF to #F5F7FA (slight cool tint) — easier on the eyes on dark substrate, matches the cool tone of the accent."
+  ],
+  "fontRecommendation": {
+    "code": "F-PERF",
+    "display": "Archivo Black (900) or Space Grotesk (700) — bold athletic grotesk for all-caps headers and kinetic marquees",
+    "body": "Inter (400–600) — clean, legible sans for body copy and schedule tables",
+    "accent": "JetBrains Mono or IBM Plex Mono for eyebrow labels, class times, and data callouts",
+    "reasoning": "Performance-athletic style demands bold, heavy-weight display type for its kinetic energy. Archivo Black / Space Grotesk 700 gives the marquee + hero type the sportswear-brand weight it needs. Inter handles body copy cleanly at every size including the schedule grid. A mono accent for class times and labels adds the data-driven performance cue without going full training-lab."
+  },
+  "designStyle": "performance-athletic-skill",
+  "cssBlock": ":root {\n  --bg: #0A0E1A;\n  --bg-card: #141929;\n  --bg-elevated: #1C2338;\n  --text-primary: #F5F7FA;\n  --text-muted: #8B95A8;\n  --border: #242B40;\n  --accent: #188BF6;\n  --accent-hover: #0E5DC0;\n  --accent-subtle: rgba(24, 139, 246, 0.10);\n  --accent-glow: rgba(24, 139, 246, 0.35);\n}"
+}

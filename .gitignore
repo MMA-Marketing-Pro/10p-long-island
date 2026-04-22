@@ -1,0 +1,6 @@
+# Build artifacts
+scrape-*.json
+screenshot-before.png
+screenshots/
+pages.json
+.DS_Store

@@ -1,0 +1,296 @@
+{
+  "name": "10th Planet Long Island",
+  "slug": "10p-long-island",
+  "website": "https://10plongisland.com",
+  "businessType": "no-gi jiu-jitsu academy",
+  "tagline": "No-Gi Jiu-Jitsu All Day. Every Day.",
+  "seoTitle": "10th Planet Jiu Jitsu Long Island",
+  "seoDescription": "Train at 10th Planet Jiu Jitsu Long Island with world-class no gi instruction, expert coaching, and a strong team-focused training environment.",
+  "siteStructure": {
+    "totalPages": 7,
+    "isSinglePage": false,
+    "pages": [
+      {
+        "url": "https://10plongisland.com/",
+        "label": "Home",
+        "slug": "index",
+        "type": "homepage",
+        "screenshotPath": "sites/10p-long-island/screenshot-before.png"
+      },
+      {
+        "url": "https://10plongisland.com/about",
+        "label": "About",
+        "slug": "about",
+        "type": "about",
+        "screenshotPath": "sites/10p-long-island/screenshots/about-before.png"
+      },
+      {
+        "url": "https://10plongisland.com/programs",
+        "label": "Programs",
+        "slug": "programs",
+        "type": "services",
+        "screenshotPath": "sites/10p-long-island/screenshots/programs-before.png"
+      },
+      {
+        "url": "https://10plongisland.com/10th-planet-long-island-schedule",
+        "label": "Schedule",
+        "slug": "schedule",
+        "type": "schedule",
+        "screenshotPath": "sites/10p-long-island/screenshots/schedule-before.png"
+      },
+      {
+        "url": "https://10plongisland.com/contact-us",
+        "label": "Contact",
+        "slug": "contact",
+        "type": "contact",
+        "screenshotPath": "sites/10p-long-island/screenshots/contact-before.png"
+      },
+      {
+        "url": "https://10plongisland.com/privacy-policy",
+        "label": "Privacy Policy",
+        "slug": "privacy-policy",
+        "type": "legal"
+      },
+      {
+        "url": "https://10plongisland.com/terms-conditions",
+        "label": "Terms & Conditions",
+        "slug": "terms-conditions",
+        "type": "legal"
+      }
+    ]
+  },
+  "pageContent": {
+    "home": {
+      "heroHeadline": "10TH PLANET LONG ISLAND",
+      "heroEyebrow": "No-Gi Jiu-Jitsu All Day. Every Day.",
+      "heroSubtext": "Join Long Island's most respected no-gi jiu-jitsu academy and build real confidence on and off the mats. Claim your FREE intro class and discover why hundreds of teens and adults trust us to transform their lives.",
+      "heroCTA": "Try a Free Jiu-Jitsu Class",
+      "heroSecondaryCTA": "Click Here to Book",
+      "missionHeadline": "Welcome — Our Mission at 10th Planet Long Island",
+      "missionBody": "Our mission is to equip you or your child with the tools and support needed to thrive at every stage of your jiu-jitsu journey. Our welcoming environment is perfect for everyone, whether you're a seasoned practitioner or stepping onto the mat for the first time. Our members represent a diverse community, ranging from ages 4 to 65+. We understand that starting jiu-jitsu as a beginner can feel intimidating. That's why we've developed our unique 8-Week Beginner Course — designed to ensure you start alongside other newcomers, providing a comfortable and supportive introduction to the art.",
+      "hoursCallout": "Open 7 Days A Week",
+      "servicesOverview": [
+        "Adults No-Gi Jiu-Jitsu",
+        "Children's No-Gi Jiu-Jitsu",
+        "Recovery — Infrared Sauna & Cold Plunge",
+        "Personal Training"
+      ],
+      "beginnerCourse": {
+        "title": "Start Jiu-Jitsu, the right way — Join our 8-Week Beginner Course",
+        "benefits": [
+          "Catered to you — fundamental classes keep you safe, engaged, and having fun",
+          "8-week program — free 30-minute intro + 16 classes over 8 weeks",
+          "Awesome perks — 10PLI uniform, gym access, sauna/cold plunge access",
+          "Train alongside other beginners"
+        ]
+      },
+      "testimonials": [
+        {
+          "quote": "I could go on for hours about how much I love this gym. First of all, this isn't just a Jiu-Jitsu gym, it's a community. Steve, our head coach, is truly phenomenal. He is a fantastic coach and teacher. The people are awesome and the environment is great. I highly recommend training here.",
+          "author": "Trevor K.",
+          "stars": 5
+        },
+        {
+          "quote": "My son and I have been training with 10th Planet for a year and a half. It's a great school — knowledgeable teachers with a welcoming fun atmosphere for the kids and any intensity level you could want for adults. Can't recommend enough!",
+          "author": "Gavin F.",
+          "stars": 5
+        },
+        {
+          "quote": "Top-notch BJJ gym with expert instructors who create a welcoming and inclusive environment. Perfect for beginners. Steve and Dylan are exceptional instructors, focusing not only on Jiu-Jitsu skills but also on personal development and motivation. Highly recommended for anyone looking to start their BJJ journey.",
+          "author": "Gahrey O.",
+          "stars": 5
+        }
+      ]
+    },
+    "about": {
+      "heading": "About 10th Planet Long Island",
+      "subheading": "Why Choose 10th Planet?",
+      "bodyText": "10th Planet Long Island is a no-gi jiu-jitsu academy built around one idea: that world-class training should be accessible, welcoming, and life-changing for everyone who walks through the door. We take pride in building a culture where all people feel welcomed yet challenged in pursuing their jiu-jitsu journey. Our students range from ages 4 to 65+, from complete beginners to seasoned competitors, and we train the 10th Planet no-gi system — one of the most respected and battle-tested grappling systems in the world.",
+      "pillars": [
+        {
+          "title": "Beginners Welcomed",
+          "body": "New to jiu-jitsu? Great. Our 8-week program is designed to get you learning as quickly and safely as possible — starting with a FREE private intro class and 2 months of 2 classes per week, plus a signature 10PLI rash guard to wear to class."
+        },
+        {
+          "title": "What Does It Include?",
+          "body": "A free private intro lesson, 16 group classes over 8 weeks, a signature 10PLI rash guard, and full access to our facility including the infrared sauna and cold plunge."
+        },
+        {
+          "title": "Great Vibe & Community",
+          "body": "We take pride in building a culture where all people feel welcomed yet challenged. This isn't just a jiu-jitsu gym — it's a community that supports each other on and off the mats."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will I train with others at my skill level?",
+          "a": "Our beginner program is filled with other people just like you. All of our students have access to our Fundamental Classes, and we do our best to partner you with someone that will help you along the way."
+        },
+        {
+          "q": "What should I wear and bring with me?",
+          "a": "A gym shirt and shorts — tighter-fitting for men, or leggings for women. A water bottle and a positive attitude works great too."
+        },
+        {
+          "q": "What happens after I fill out the form?",
+          "a": "Someone from our office staff will reach out to help you find a class time that works. You'll get a free private intro lesson where you'll learn the ABC's of jiu-jitsu. Then you'll jump in our Fundamentals class with the rest of the team and learn some more."
+        }
+      ]
+    },
+    "programs": {
+      "heading": "Programs",
+      "subheading": "Whether you're a beginner or chasing a competitive edge, we have a class for you. Training is available AM & PM, 7 days a week.",
+      "serviceList": [
+        {
+          "name": "Adults No-Gi Jiu-Jitsu",
+          "description": "Whether you're a beginner or looking for a competitive edge, our no-gi jiu-jitsu classes will meet your needs. Training is available both AM & PM with classes 7 days a week to meet varying schedules.",
+          "cta": "Try a Free Class Today"
+        },
+        {
+          "name": "Children's No-Gi Jiu-Jitsu (Ages 5–12)",
+          "description": "Building discipline, getting exercise, and learning jiu-jitsu in a fun and engaging way — all in one, for kids ages 5–12. Structured into Kids 5–7 and Kids 8–12 classes.",
+          "cta": "Try a Free Class Today"
+        },
+        {
+          "name": "Recovery — Infrared Sauna & Cold Plunge",
+          "description": "Keep your sweat going, detox, and feel great by sitting in our infrared sauna before or after practice. Fight off injuries and heal quicker with our cold plunge. Included with all memberships.",
+          "cta": "Try a Free Class Today"
+        },
+        {
+          "name": "Personal Training",
+          "description": "Get strength and conditioning plus physical therapy advice from in-house professionals and jiu-jitsu black belts who understand your journey.",
+          "cta": "Try a Free Class Today"
+        },
+        {
+          "name": "8-Week Beginner Course",
+          "description": "Our flagship onboarding program. Free 30-minute private intro lesson, 16 group classes over 8 weeks, a 10PLI rash guard, and full facility access including sauna and cold plunge.",
+          "cta": "Start the 8-Week Course"
+        },
+        {
+          "name": "MMA (Advanced & Beginner)",
+          "description": "Blend your jiu-jitsu with striking. Beginner MMA on Sunday afternoons and Advanced MMA on Friday nights — both taught by coaches who understand the full game.",
+          "cta": "Try a Free Class Today"
+        },
+        {
+          "name": "Masters 35+ Jiu-Jitsu",
+          "description": "Train hard, train smart, and train sustainably. A dedicated class for the 35+ crowd where technique and longevity come first.",
+          "cta": "Try a Free Class Today"
+        }
+      ]
+    },
+    "schedule": {
+      "heading": "10th Planet Long Island Class Schedule",
+      "subheading": "Open 7 days a week. AM and PM classes for adults and kids.",
+      "weeklySchedule": [
+        {
+          "day": "Monday",
+          "classes": [
+            {"time": "6:00 AM", "name": "Adult Mixed Level"},
+            {"time": "9:30 AM", "name": "Intro Class (by appt.)"},
+            {"time": "10:00 AM", "name": "Adult Fundamentals"},
+            {"time": "6:00 PM", "name": "Intro Class (by appt.)"},
+            {"time": "6:30 PM", "name": "Adult Mixed Level"},
+            {"time": "7:30 PM", "name": "Open Mat"}
+          ]
+        },
+        {
+          "day": "Tuesday",
+          "classes": [
+            {"time": "4:30 PM", "name": "Kids 8–12"},
+            {"time": "5:30 PM", "name": "Kids 5–7"},
+            {"time": "6:00 PM", "name": "Intro Class (by appt.)"},
+            {"time": "6:30 PM", "name": "Adult Fundamentals"},
+            {"time": "7:30 PM", "name": "Open Mat"}
+          ]
+        },
+        {
+          "day": "Wednesday",
+          "classes": [
+            {"time": "6:00 AM", "name": "Adult Mixed Level"},
+            {"time": "9:30 AM", "name": "Intro Class (by appt.)"},
+            {"time": "10:00 AM", "name": "Adult Fundamentals"},
+            {"time": "6:00 PM", "name": "Intro Class (by appt.)"},
+            {"time": "6:30 PM", "name": "Adult Mixed Level"},
+            {"time": "7:30 PM", "name": "Open Mat"}
+          ]
+        },
+        {
+          "day": "Thursday",
+          "classes": [
+            {"time": "4:30 PM", "name": "Kids 8–12"},
+            {"time": "5:30 PM", "name": "Kids 5–7"},
+            {"time": "6:00 PM", "name": "Intro Class (by appt.)"},
+            {"time": "6:30 PM", "name": "Adult Fundamentals"},
+            {"time": "7:30 PM", "name": "Open Mat"}
+          ]
+        },
+        {
+          "day": "Friday",
+          "classes": [
+            {"time": "6:00 AM", "name": "Adult Mixed Level"},
+            {"time": "10:00 AM", "name": "Adult Fundamentals"},
+            {"time": "6:00 PM", "name": "Open Mat"},
+            {"time": "7:00 PM", "name": "Advanced MMA"}
+          ]
+        },
+        {
+          "day": "Saturday",
+          "classes": [
+            {"time": "8:30 AM", "name": "Intro Class (by appt.)"},
+            {"time": "9:00 AM", "name": "Adult Mixed Level"},
+            {"time": "10:15 AM", "name": "Kids 8–12"},
+            {"time": "11:15 AM", "name": "Kids 5–7"}
+          ]
+        },
+        {
+          "day": "Sunday",
+          "classes": [
+            {"time": "8:00 AM", "name": "Masters 35+ Jiu-Jitsu"},
+            {"time": "10:00 AM", "name": "Jiu-Jitsu Striking"},
+            {"time": "11:00 AM", "name": "Open Mat"},
+            {"time": "12:00 PM", "name": "Beginner MMA"}
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "heading": "Contact 10th Planet Long Island",
+      "subheading": "Ready to step on the mat? Get in touch and we'll find a class time that works for you.",
+      "phone": "(631) 848-5851",
+      "email": "staff@10plongisland.com",
+      "secondaryEmail": "10PLongIsland@gmail.com",
+      "address": "601 Old Willets Path, Hauppauge, NY 11788",
+      "businessHours": "Open 7 days a week — AM & PM classes (see full schedule)",
+      "mapEmbed": true,
+      "formFields": ["Full Name", "Phone", "Email", "How Can We Help?"]
+    }
+  },
+  "socialMedia": {
+    "instagram": "https://www.instagram.com/10plongisland/",
+    "facebook": "https://www.facebook.com/10plongisland"
+  },
+  "brandColors": ["#188BF6", "#001C53", "#0E5DC0", "#FFFFFF", "#000000"],
+  "brandColorRoles": {
+    "primary": "#188BF6",
+    "secondary": "#001C53",
+    "background": "#0A0E1A",
+    "accent": "#188BF6",
+    "accentDeep": "#0E5DC0",
+    "textDark": "#0A0E1A",
+    "textLight": "#FFFFFF",
+    "textMuted": "#9CA7B8"
+  },
+  "brandColorNotes": "Current site uses a navy + electric-blue palette. CSS var --secondary=#188BF6 is the real primary brand accent; --primary=#37ca37 (green) appears set but unused on the rendered pages. Headers/footers sit on a deep navy (#001C53 / near-black), CTA buttons are electric blue (#188BF6 → #0E5DC0 on hover). Logo is blue on white.",
+  "logoUrl": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/UrcblURsSj7egEPfYXhH/media/6951cf57ee10472ad9158d83.png",
+  "existingImages": {
+    "logo": {
+      "found": true,
+      "url": "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/UrcblURsSj7egEPfYXhH/media/6951cf57ee10472ad9158d83.png",
+      "format": "PNG"
+    },
+    "team": [],
+    "gallery": {"count": 3, "appearsReal": true, "description": "3 real gym/training photos on the homepage beginner-course section"},
+    "facility": {"count": 1, "description": "Mat/training floor shot used as hero background"}
+  },
+  "designRecommendation": "performance-athletic-skill",
+  "designRationale": "10th Planet Long Island is a no-gi BJJ academy targeting a wide age range (4–65+) with a strong community vibe, a flagship 8-week beginner funnel, recovery amenities (sauna + cold plunge), and kids programs. They list real testimonials, a full 7-day schedule, and Coach Steve + Coach Dylan — but they don't publish a pro-fighter roster or lead with performance-metrics language, so cinematic-fight-skill and training-lab-skill would overreach. performance-athletic-skill is the best fit: bold sportswear-brand energy, kinetic marquee, one electric accent (their existing #188BF6 blue), and an approachable-but-serious tone that works for both the competitive adult and the nervous-first-timer. The existing navy + electric-blue palette fits the style naturally.",
+  "currentSiteIssues": "Site is a GoHighLevel funnel template — clean but generic. Stacked blue CTA boxes on a flat navy background with no visual hierarchy, no real facility/instructor photography above the fold, no lineage or 10th Planet system positioning, weak typography (system defaults), identical 'Try a Free Class Today' CTA stamped on every program card with no variety. Schedule page is a text wall with no visual rhythm. No Instagram feed, no team/coach page, no pricing or membership overview, no lineage/credentials section that earns the 'Long Island's most respected' claim from the hero. Mobile layout inherits the same blockiness — nothing differentiates it from hundreds of other GHL BJJ templates."
+}
