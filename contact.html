@@ -111,9 +111,15 @@
         <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks — we will reach out shortly.');">
           <h3>Send Us A Message</h3>
           <p style="color: var(--muted); font-size: 0.92rem; margin-top: -8px;">Fill this out if you have a specific question. If you're ready to book a class, use the Free Trial button — it's faster.</p>
-          <div class="form-field">
-            <label for="contact-name">Full Name</label>
-            <input type="text" id="contact-name" required>
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+            <div class="form-field">
+              <label for="contact-first-name">First Name</label>
+              <input type="text" id="contact-first-name" autocomplete="given-name" required>
+            </div>
+            <div class="form-field">
+              <label for="contact-last-name">Last Name</label>
+              <input type="text" id="contact-last-name" autocomplete="family-name" required>
+            </div>
           </div>
           <div class="form-field">
             <label for="contact-phone">Phone</label>
