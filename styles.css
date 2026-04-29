@@ -1486,6 +1486,14 @@ body[data-page="schedule"] .page-header-bg::after {
 .lead-modal__close:hover { background: var(--bg-elevated); color: var(--text); }
 .lead-modal__close svg, .lead-modal__close i { width: 20px; height: 20px; }
 .lead-modal__body { padding: 24px 32px 32px; }
+.lead-modal__hp {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
 .lead-modal__row {
   display: grid;
   grid-template-columns: 1fr 1fr;

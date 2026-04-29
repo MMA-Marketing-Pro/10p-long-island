@@ -175,8 +175,9 @@
       <p class="lead-modal__subtitle">Fill this out and we'll show you our class calendar on the next step.</p>
       <button class="lead-modal__close" aria-label="Close"><i data-lucide="x"></i></button>
     </div>
-    <form class="lead-modal__form" novalidate>
+    <form class="lead-modal__form">
       <div class="lead-modal__body">
+        <div class="lead-modal__hp" aria-hidden="true"><label for="lead-website">Leave this empty</label><input type="text" id="lead-website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="lead-modal__row">
           <div class="lead-modal__field"><label for="lead-first">First Name</label><input type="text" id="lead-first" required autocomplete="given-name"></div>
           <div class="lead-modal__field"><label for="lead-last">Last Name</label><input type="text" id="lead-last" required autocomplete="family-name"></div>

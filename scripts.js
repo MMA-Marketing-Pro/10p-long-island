@@ -77,6 +77,9 @@
     var backdrop = modal.querySelector('.lead-modal__backdrop');
     var form = modal.querySelector('.lead-modal__form');
     var programSelect = modal.querySelector('#lead-program');
+    var honeypot = modal.querySelector('input[name="website"]');
+    var openedAt = 0;
+    var MIN_FILL_MS = 2500;
 
     function open(presetProgram) {
       if (presetProgram && programSelect) {
@@ -84,7 +87,8 @@
       }
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
-      var first = modal.querySelector('input');
+      openedAt = Date.now();
+      var first = modal.querySelector('.lead-modal__field input:not([tabindex="-1"])');
       setTimeout(function () { if (first) first.focus(); }, 280);
     }
     function close() {
@@ -119,6 +123,8 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (honeypot && honeypot.value) return;
+        if (openedAt && Date.now() - openedAt < MIN_FILL_MS) return;
         var data = {
           firstName: form.querySelector('#lead-first').value.trim(),
           lastName: form.querySelector('#lead-last').value.trim(),
