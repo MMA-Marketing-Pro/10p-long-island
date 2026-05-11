@@ -154,12 +154,12 @@
 
         // Pick GHL webhooks by program family — adult vs. kids
         var ADULT_WEBHOOKS = [
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/8ab9dffb-fc9c-4e0c-bf19-fdf32bb3926f',
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/5e5b564b-7cee-4063-88cd-5647fe48cff1'
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/c2c09a65-cd99-40d2-a6d1-ebbad2293596',
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/b6f2ecfa-6163-448c-b27d-0d1ba7d9e001'
         ];
         var KIDS_WEBHOOKS = [
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/df06de52-0c79-43e7-abb5-b7c976c46f4f',
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/bd5531bd-f025-4891-93f6-4e8d00e6b7ad'
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/26d5c4a4-befa-4aca-9252-d7d8078fdbf0',
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/302de1d1-849a-4f42-9c1e-8d897ae1df7b'
         ];
         var webhooks = [];
         if (program === 'adult-no-gi') webhooks = ADULT_WEBHOOKS;
