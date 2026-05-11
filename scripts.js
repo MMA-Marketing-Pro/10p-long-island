@@ -125,19 +125,54 @@
         e.preventDefault();
         if (honeypot && honeypot.value) return;
         if (openedAt && Date.now() - openedAt < MIN_FILL_MS) return;
-        var data = {
-          firstName: form.querySelector('#lead-first').value.trim(),
-          lastName: form.querySelector('#lead-last').value.trim(),
-          email: form.querySelector('#lead-email').value.trim(),
-          phone: form.querySelector('#lead-phone').value.trim(),
-          program: form.querySelector('#lead-program').value,
+        var firstName = form.querySelector('#lead-first').value.trim();
+        var lastName = form.querySelector('#lead-last').value.trim();
+        var email = form.querySelector('#lead-email').value.trim();
+        var phone = form.querySelector('#lead-phone').value.trim();
+        var program = form.querySelector('#lead-program').value;
+
+        var payload = {
+          first_name: firstName,
+          last_name: lastName,
+          full_name: (firstName + ' ' + lastName).trim(),
+          email: email,
+          phone: phone,
+          program: program,
+          source: 'website-lead-modal',
+          source_page: location.pathname,
+          page_url: location.href,
+          referrer: document.referrer || '',
           timestamp: new Date().toISOString()
         };
+
         try {
-          sessionStorage.setItem('leadFormData', JSON.stringify(data));
+          sessionStorage.setItem('leadFormData', JSON.stringify({
+            firstName: firstName, lastName: lastName, email: email,
+            phone: phone, program: program, timestamp: payload.timestamp
+          }));
         } catch (err) {}
-        // TODO: wire this to a webhook or GHL form capture if backend capture is required.
-        window.location.href = 'booking.html?program=' + encodeURIComponent(data.program);
+
+        // Fire both GHL webhooks in parallel — keepalive lets them survive the redirect
+        var webhooks = [
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/8ab9dffb-fc9c-4e0c-bf19-fdf32bb3926f',
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/5e5b564b-7cee-4063-88cd-5647fe48cff1'
+        ];
+        webhooks.forEach(function (url) {
+          try {
+            fetch(url, {
+              method: 'POST',
+              mode: 'no-cors',
+              keepalive: true,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          } catch (err) {}
+        });
+
+        // Small delay so the fetches dispatch before navigation, then forward
+        setTimeout(function () {
+          window.location.href = 'booking.html?program=' + encodeURIComponent(program);
+        }, 180);
       });
     }
   }
