@@ -165,23 +165,30 @@
         if (program === 'adult-no-gi') webhooks = ADULT_WEBHOOKS;
         else if (program === 'kids-8-12' || program === 'kids-5-7') webhooks = KIDS_WEBHOOKS;
 
+        // Use mode:cors (the default) so the Content-Type: application/json header is preserved.
+        // GHL's preflight returns access-control-allow-origin:* and access-control-allow-headers:*,
+        // so no preflight failure. keepalive:true lets the POST survive the redirect.
+        // (Previously used mode:no-cors, which silently stripped Content-Type and made GHL
+        //  receive text/plain — workflows never triggered.)
+        var body = JSON.stringify(payload);
         webhooks.forEach(function (url) {
           try {
             fetch(url, {
               method: 'POST',
-              mode: 'no-cors',
+              mode: 'cors',
+              credentials: 'omit',
               keepalive: true,
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
+              body: body
             });
           } catch (err) {}
         });
 
-        // Small delay so the fetches dispatch before navigation when webhooks are firing
+        // Brief grace window so the keepalive fetches register before navigation
         var redirect = function () {
           window.location.href = 'booking.html?program=' + encodeURIComponent(program);
         };
-        if (webhooks.length) setTimeout(redirect, 180);
+        if (webhooks.length) setTimeout(redirect, 200);
         else redirect();
       });
     }
