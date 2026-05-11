@@ -152,27 +152,32 @@
           }));
         } catch (err) {}
 
-        // Fire both GHL webhooks in parallel — keepalive lets them survive the redirect
-        var webhooks = [
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/8ab9dffb-fc9c-4e0c-bf19-fdf32bb3926f',
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/5e5b564b-7cee-4063-88cd-5647fe48cff1'
-        ];
-        webhooks.forEach(function (url) {
-          try {
-            fetch(url, {
-              method: 'POST',
-              mode: 'no-cors',
-              keepalive: true,
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-          } catch (err) {}
-        });
+        // Fire GHL webhooks only for the adult program — kids programs are not wired to these
+        var isAdult = program === 'adult-no-gi';
+        if (isAdult) {
+          var webhooks = [
+            'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/8ab9dffb-fc9c-4e0c-bf19-fdf32bb3926f',
+            'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/5e5b564b-7cee-4063-88cd-5647fe48cff1'
+          ];
+          webhooks.forEach(function (url) {
+            try {
+              fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                keepalive: true,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+            } catch (err) {}
+          });
+        }
 
-        // Small delay so the fetches dispatch before navigation, then forward
-        setTimeout(function () {
+        // Small delay so the fetches dispatch before navigation (adult only); otherwise redirect immediately
+        var redirect = function () {
           window.location.href = 'booking.html?program=' + encodeURIComponent(program);
-        }, 180);
+        };
+        if (isAdult) setTimeout(redirect, 180);
+        else redirect();
       });
     }
   }
