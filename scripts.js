@@ -152,6 +152,17 @@
           }));
         } catch (err) {}
 
+        // Meta Pixel — Lead conversion (fires only for free-trial / lead-modal submits)
+        try {
+          if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Lead', {
+              content_name: program,
+              content_category: program.indexOf('kids') === 0 ? 'kids' : 'adult',
+              source_page: location.pathname
+            });
+          }
+        } catch (err) {}
+
         // Pick GHL webhooks by program family — adult vs. kids
         var ADULT_WEBHOOKS = [
           'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/c2c09a65-cd99-40d2-a6d1-ebbad2293596',
