@@ -1906,6 +1906,7 @@ body[data-page="adult-beginner"] .lp-h2 .accent { color: var(--accent); }
 /* ---- Section head ---- */
 .lp-section-head {
   max-width: 880px;
+  margin-inline: auto;
   margin-bottom: clamp(40px, 6vw, 72px);
 }
 .lp-section-cta {
