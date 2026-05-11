@@ -152,31 +152,36 @@
           }));
         } catch (err) {}
 
-        // Fire GHL webhooks only for the adult program — kids programs are not wired to these
-        var isAdult = program === 'adult-no-gi';
-        if (isAdult) {
-          var webhooks = [
-            'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/8ab9dffb-fc9c-4e0c-bf19-fdf32bb3926f',
-            'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/5e5b564b-7cee-4063-88cd-5647fe48cff1'
-          ];
-          webhooks.forEach(function (url) {
-            try {
-              fetch(url, {
-                method: 'POST',
-                mode: 'no-cors',
-                keepalive: true,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-              });
-            } catch (err) {}
-          });
-        }
+        // Pick GHL webhooks by program family — adult vs. kids
+        var ADULT_WEBHOOKS = [
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/8ab9dffb-fc9c-4e0c-bf19-fdf32bb3926f',
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/5e5b564b-7cee-4063-88cd-5647fe48cff1'
+        ];
+        var KIDS_WEBHOOKS = [
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/df06de52-0c79-43e7-abb5-b7c976c46f4f',
+          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/bd5531bd-f025-4891-93f6-4e8d00e6b7ad'
+        ];
+        var webhooks = [];
+        if (program === 'adult-no-gi') webhooks = ADULT_WEBHOOKS;
+        else if (program === 'kids-8-12' || program === 'kids-5-7') webhooks = KIDS_WEBHOOKS;
 
-        // Small delay so the fetches dispatch before navigation (adult only); otherwise redirect immediately
+        webhooks.forEach(function (url) {
+          try {
+            fetch(url, {
+              method: 'POST',
+              mode: 'no-cors',
+              keepalive: true,
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+          } catch (err) {}
+        });
+
+        // Small delay so the fetches dispatch before navigation when webhooks are firing
         var redirect = function () {
           window.location.href = 'booking.html?program=' + encodeURIComponent(program);
         };
-        if (isAdult) setTimeout(redirect, 180);
+        if (webhooks.length) setTimeout(redirect, 180);
         else redirect();
       });
     }
