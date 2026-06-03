@@ -79,7 +79,7 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
     <div class="page-header-inner">
       <div class="page-header-crumb"><a href="index.html">Home</a> <span>/</span> <span>Contact</span></div>
       <h1 class="display">Get<br>In Touch.</h1>
-      <p class="page-header-lead">Ready to step on the mat? Call, email, or send a message. We'll find a class time that works for you and get you on the schedule.</p>
+      <p class="page-header-lead">Ready to step on the mat? Call or email and we'll find a class time that works for you and get you on the schedule.</p>
     </div>
   </div>
 </section>
@@ -122,36 +122,6 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
             </div>
           </li>
         </ul>
-      </div>
-
-      <div>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks — we will reach out shortly.');">
-          <h3>Send Us A Message</h3>
-          <p style="color: var(--muted); font-size: 0.92rem; margin-top: -8px;">Fill this out if you have a specific question. If you're ready to book a class, use the Free Trial button — it's faster.</p>
-          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
-            <div class="form-field">
-              <label for="contact-first-name">First Name</label>
-              <input type="text" id="contact-first-name" autocomplete="given-name" required>
-            </div>
-            <div class="form-field">
-              <label for="contact-last-name">Last Name</label>
-              <input type="text" id="contact-last-name" autocomplete="family-name" required>
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="contact-phone">Phone</label>
-            <input type="tel" id="contact-phone" required>
-          </div>
-          <div class="form-field">
-            <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" required>
-          </div>
-          <div class="form-field">
-            <label for="contact-message">How Can We Help?</label>
-            <textarea id="contact-message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message <i data-lucide="arrow-right"></i></button>
-        </form>
       </div>
     </div>
 
@@ -244,7 +214,7 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
           <div class="lead-modal__field"><label for="lead-last">Last Name</label><input type="text" id="lead-last" required autocomplete="family-name"></div>
         </div>
         <div class="lead-modal__field"><label for="lead-email">Email</label><input type="email" id="lead-email" required autocomplete="email"></div>
-        <div class="lead-modal__field"><label for="lead-phone">Phone</label><input type="tel" id="lead-phone" required autocomplete="tel" placeholder="(631) 555-0123"></div>
+        <div class="lead-modal__field"><label for="lead-phone">Phone <span class="field-optional">(optional)</span></label><input type="tel" id="lead-phone" autocomplete="tel" placeholder="(631) 555-0123"></div>
         <div class="lead-modal__field">
           <label for="lead-program">Which class are you interested in?</label>
           <select id="lead-program" required>
@@ -253,7 +223,18 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
             <option value="kids-5-7">Little Kids Jiu-Jitsu (Ages 5–7)</option>
           </select>
         </div>
+        <div class="consent-group">
+          <label class="consent-check">
+            <input type="checkbox" id="lead-sms-transactional" name="sms_consent_transactional" value="yes">
+            <span>I consent to receive non-marketing text messages from 10th Planet LI INC regarding service notifications, account updates and appointment reminders. Message frequency varies. Message &amp; data rates may apply. Reply HELP for assistance. Reply STOP to opt out.</span>
+          </label>
+          <label class="consent-check">
+            <input type="checkbox" id="lead-sms-marketing" name="sms_consent_marketing" value="yes">
+            <span>I consent to receive marketing text messages from 10th Planet LI INC regarding membership information and discount offers. Message frequency varies. Message &amp; data rates may apply. Reply HELP for assistance. Reply STOP to opt out.</span>
+          </label>
+        </div>
         <button type="submit" class="btn btn-primary lead-modal__submit">Continue To Booking <i data-lucide="arrow-right"></i></button>
+        <p class="lead-modal__legal">By submitting, you agree to our <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>
       </div>
     </form>
   </div>

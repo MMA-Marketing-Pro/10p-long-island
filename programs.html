@@ -260,7 +260,7 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
           <div class="lead-modal__field"><label for="lead-last">Last Name</label><input type="text" id="lead-last" required autocomplete="family-name"></div>
         </div>
         <div class="lead-modal__field"><label for="lead-email">Email</label><input type="email" id="lead-email" required autocomplete="email"></div>
-        <div class="lead-modal__field"><label for="lead-phone">Phone</label><input type="tel" id="lead-phone" required autocomplete="tel" placeholder="(631) 555-0123"></div>
+        <div class="lead-modal__field"><label for="lead-phone">Phone <span class="field-optional">(optional)</span></label><input type="tel" id="lead-phone" autocomplete="tel" placeholder="(631) 555-0123"></div>
         <div class="lead-modal__field">
           <label for="lead-program">Which class are you interested in?</label>
           <select id="lead-program" required>
@@ -269,7 +269,18 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
             <option value="kids-5-7">Little Kids Jiu-Jitsu (Ages 5–7)</option>
           </select>
         </div>
+        <div class="consent-group">
+          <label class="consent-check">
+            <input type="checkbox" id="lead-sms-transactional" name="sms_consent_transactional" value="yes">
+            <span>I consent to receive non-marketing text messages from 10th Planet LI INC regarding service notifications, account updates and appointment reminders. Message frequency varies. Message &amp; data rates may apply. Reply HELP for assistance. Reply STOP to opt out.</span>
+          </label>
+          <label class="consent-check">
+            <input type="checkbox" id="lead-sms-marketing" name="sms_consent_marketing" value="yes">
+            <span>I consent to receive marketing text messages from 10th Planet LI INC regarding membership information and discount offers. Message frequency varies. Message &amp; data rates may apply. Reply HELP for assistance. Reply STOP to opt out.</span>
+          </label>
+        </div>
         <button type="submit" class="btn btn-primary lead-modal__submit">Continue To Booking <i data-lucide="arrow-right"></i></button>
+        <p class="lead-modal__legal">By submitting, you agree to our <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>
       </div>
     </form>
   </div>

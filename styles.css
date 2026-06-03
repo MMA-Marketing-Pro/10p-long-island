@@ -1219,14 +1219,12 @@ body[data-page="schedule"] .page-header-bg::after {
 
 /* ---------- Contact page ---------- */
 .contact-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 72px);
   margin-top: clamp(32px, 5vw, 56px);
 }
 .contact-info-list {
   list-style: none;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: var(--space-md);
 }
 .contact-info-list li {
@@ -1263,44 +1261,6 @@ body[data-page="schedule"] .page-header-bg::after {
   font-weight: 500;
 }
 .contact-info-value a:hover { color: var(--accent); }
-.contact-form {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: clamp(24px, 3.5vw, 40px);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-}
-.contact-form h3 { font-size: 1.3rem; }
-.form-field { display: flex; flex-direction: column; gap: 8px; }
-.form-field label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.form-field input,
-.form-field textarea,
-.form-field select {
-  padding: 14px 16px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 0.95rem;
-  color: var(--text);
-  transition: border-color 200ms ease;
-}
-.form-field input:focus,
-.form-field textarea:focus,
-.form-field select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-subtle);
-}
-.form-field textarea { resize: vertical; min-height: 120px; }
-.contact-form .btn { margin-top: 8px; }
 .map-placeholder {
   aspect-ratio: 16/10;
   border-radius: var(--radius-md);
@@ -1324,7 +1284,6 @@ body[data-page="schedule"] .page-header-bg::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20h40M20 0v40' stroke='%23242B40' stroke-width='1'/%3E%3C/svg%3E");
 }
 .map-placeholder span { position: relative; }
-@media (max-width: 960px) { .contact-split { grid-template-columns: 1fr; } }
 
 /* ---------- Footer ---------- */
 .footer {
@@ -1413,6 +1372,7 @@ body[data-page="schedule"] .page-header-bg::after {
   padding-block: clamp(56px, 8vw, 112px);
 }
 .legal-body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-md); font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.legal-body h3 { margin-top: var(--space-lg); margin-bottom: var(--space-sm); font-size: 1.05rem; }
 .legal-body p { margin-bottom: var(--space-md); color: var(--muted); font-size: 0.98rem; line-height: 1.7; }
 .legal-body ul { padding-left: 20px; margin-bottom: var(--space-md); color: var(--muted); }
 .legal-body li { margin-bottom: 8px; }
@@ -1527,6 +1487,47 @@ body[data-page="schedule"] .page-header-bg::after {
 .lead-modal__submit {
   width: 100%;
   margin-top: 8px;
+}
+.lead-modal__legal {
+  margin-top: 12px;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--muted);
+  text-align: center;
+}
+.lead-modal__legal a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ---- Form consent checkboxes (SMS opt-in) ---- */
+.consent-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 6px 0 4px;
+}
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.consent-check input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.field-optional {
+  font-weight: 400;
+  font-size: 0.85em;
+  opacity: 0.65;
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }

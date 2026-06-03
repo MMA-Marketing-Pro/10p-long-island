@@ -130,6 +130,10 @@
         var email = form.querySelector('#lead-email').value.trim();
         var phone = form.querySelector('#lead-phone').value.trim();
         var program = form.querySelector('#lead-program').value;
+        var smsTxnEl = form.querySelector('#lead-sms-transactional');
+        var smsMktEl = form.querySelector('#lead-sms-marketing');
+        var smsTransactional = smsTxnEl ? smsTxnEl.checked : false;
+        var smsMarketing = smsMktEl ? smsMktEl.checked : false;
 
         var payload = {
           first_name: firstName,
@@ -138,6 +142,8 @@
           email: email,
           phone: phone,
           program: program,
+          sms_consent_transactional: smsTransactional,
+          sms_consent_marketing: smsMarketing,
           source: 'website-lead-modal',
           source_page: location.pathname,
           page_url: location.href,
