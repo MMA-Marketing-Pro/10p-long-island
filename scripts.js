@@ -110,6 +110,41 @@
     });
 
     if (form) {
+      var submitBtn = form.querySelector('.lead-modal__submit');
+
+      // Safe DOM construction only (no innerHTML). `message` is plain text; an
+      // optional phone link is appended at the end as a real <a> element.
+      function showLeadError(message, telLabel, telHref) {
+        var el = form.querySelector('.lead-modal__error');
+        if (!el) {
+          el = document.createElement('p');
+          el.className = 'lead-modal__error';
+          el.setAttribute('role', 'alert');
+          if (submitBtn && submitBtn.parentNode) submitBtn.parentNode.insertBefore(el, submitBtn.nextSibling);
+          else form.appendChild(el);
+        }
+        el.textContent = message;
+        if (telLabel && telHref) {
+          el.appendChild(document.createTextNode(' '));
+          var a = document.createElement('a');
+          a.href = telHref;
+          a.textContent = telLabel;
+          el.appendChild(a);
+        }
+        el.classList.add('is-visible');
+      }
+      function hideLeadError() {
+        var el = form.querySelector('.lead-modal__error');
+        if (el) el.classList.remove('is-visible');
+      }
+      function setSubmitting(on) {
+        form.dataset.submitting = on ? '1' : '';
+        if (submitBtn) {
+          submitBtn.disabled = !!on;
+          submitBtn.classList.toggle('is-loading', !!on);
+        }
+      }
+
       // Phone mask
       var phone = form.querySelector('input[type="tel"]');
       if (phone) {
@@ -123,17 +158,26 @@
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (form.dataset.submitting === '1') return;
         if (honeypot && honeypot.value) return;
         if (openedAt && Date.now() - openedAt < MIN_FILL_MS) return;
         var firstName = form.querySelector('#lead-first').value.trim();
         var lastName = form.querySelector('#lead-last').value.trim();
         var email = form.querySelector('#lead-email').value.trim();
-        var phone = form.querySelector('#lead-phone').value.trim();
+        var phoneEl = form.querySelector('#lead-phone');
+        var phone = phoneEl.value.trim();
         var program = form.querySelector('#lead-program').value;
         var smsTxnEl = form.querySelector('#lead-sms-transactional');
         var smsMktEl = form.querySelector('#lead-sms-marketing');
         var smsTransactional = smsTxnEl ? smsTxnEl.checked : false;
         var smsMarketing = smsMktEl ? smsMktEl.checked : false;
+
+        // Phone is required — confirm it's a complete 10-digit number.
+        if (phone.replace(/\D/g, '').length < 10) {
+          showLeadError('Please enter a valid 10-digit phone number so we can confirm your free class.');
+          if (phoneEl) phoneEl.focus();
+          return;
+        }
 
         var payload = {
           first_name: firstName,
@@ -169,44 +213,49 @@
           }
         } catch (err) {}
 
-        // Pick GHL webhooks by program family — adult vs. kids
-        var ADULT_WEBHOOKS = [
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/c2c09a65-cd99-40d2-a6d1-ebbad2293596',
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/b6f2ecfa-6163-448c-b27d-0d1ba7d9e001'
-        ];
-        var KIDS_WEBHOOKS = [
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/26d5c4a4-befa-4aca-9252-d7d8078fdbf0',
-          'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/302de1d1-849a-4f42-9c1e-8d897ae1df7b'
-        ];
-        var webhooks = [];
-        if (program === 'adult-no-gi') webhooks = ADULT_WEBHOOKS;
-        else if (program === 'kids-8-12' || program === 'kids-5-7') webhooks = KIDS_WEBHOOKS;
-
-        // Use mode:cors (the default) so the Content-Type: application/json header is preserved.
-        // GHL's preflight returns access-control-allow-origin:* and access-control-allow-headers:*,
-        // so no preflight failure. keepalive:true lets the POST survive the redirect.
-        // (Previously used mode:no-cors, which silently stripped Content-Type and made GHL
-        //  receive text/plain — workflows never triggered.)
+        // Deliver server-side through our same-origin endpoint, then redirect
+        // only once delivery is confirmed. The browser no longer posts to GHL/SPOS
+        // directly — that silently dropped mobile leads when the redirect cancelled
+        // the in-flight request. /api/lead forwards to every webhook server-side.
         var body = JSON.stringify(payload);
-        webhooks.forEach(function (url) {
-          try {
-            fetch(url, {
-              method: 'POST',
-              mode: 'cors',
-              credentials: 'omit',
-              keepalive: true,
-              headers: { 'Content-Type': 'application/json' },
-              body: body
-            });
-          } catch (err) {}
-        });
+        setSubmitting(true);
+        hideLeadError();
 
-        // Brief grace window so the keepalive fetches register before navigation
         var redirect = function () {
           window.location.href = 'booking.html?program=' + encodeURIComponent(program);
         };
-        if (webhooks.length) setTimeout(redirect, 200);
-        else redirect();
+        var fail = function () {
+          setSubmitting(false);
+          showLeadError(
+            'Sorry — we couldn’t submit that just now. Call or text us and we’ll get you booked right away:',
+            '(631) 848-5851',
+            'tel:+16318485851'
+          );
+        };
+
+        var controller = new AbortController();
+        var timer = setTimeout(function () { controller.abort(); }, 12000);
+
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: body,
+          signal: controller.signal
+        })
+          .then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              return { httpOk: res.ok, data: data };
+            });
+          })
+          .then(function (result) {
+            clearTimeout(timer);
+            if (result.httpOk && result.data && result.data.ok) redirect();
+            else fail();
+          })
+          .catch(function () {
+            clearTimeout(timer);
+            fail();
+          });
       });
     }
   }

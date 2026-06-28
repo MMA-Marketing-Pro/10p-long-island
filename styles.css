@@ -1488,6 +1488,32 @@ body[data-page="schedule"] .page-header-bg::after {
   width: 100%;
   margin-top: 8px;
 }
+.lead-modal__submit.is-loading {
+  opacity: 0.65;
+  cursor: progress;
+  pointer-events: none;
+}
+.lead-modal__error {
+  display: none;
+  margin: 12px 0 0;
+  padding: 11px 14px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #FCA5A5;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.30);
+  border-radius: 10px;
+  text-align: center;
+}
+.lead-modal__error.is-visible {
+  display: block;
+}
+.lead-modal__error a {
+  color: #FCA5A5;
+  font-weight: 700;
+  text-decoration: underline;
+  white-space: nowrap;
+}
 .lead-modal__legal {
   margin-top: 12px;
   font-size: 0.74rem;

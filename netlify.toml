@@ -1,0 +1,23 @@
+# Netlify config for 10th Planet Long Island (static site + lead-intake function).
+# Intentionally minimal: only the function directory and the /api/lead route are
+# declared here so the existing static publish settings in the Netlify dashboard
+# are left untouched.
+
+# Pin the function runtime to a modern Node so global fetch / AbortSignal.timeout
+# are available. (Affects function bundling/runtime only — the static site has no
+# build step, so this does not change how the pages are published.)
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Same-origin lead endpoint. The form POSTs to /api/lead; this rewrites (200, not
+# a 3xx) to the function so the method + JSON body are preserved and the browser
+# URL stays /api/lead.
+[[redirects]]
+  from = "/api/lead"
+  to = "/.netlify/functions/lead"
+  status = 200
+  force = true
