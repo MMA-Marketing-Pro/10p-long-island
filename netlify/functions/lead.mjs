@@ -102,15 +102,20 @@ export default async (request) => {
 
   const [requiredResults, optionalResults] = await Promise.all([
     deliverAll(required, payload),
-    deliverAll(optional, payload),
+    deliverAll(optional, payload, { wantBody: true }), // capture SPOS lead id for booking handoff
   ]);
 
   const requiredOk = requiredResults.every((r) => r.ok);
+  // SPOS returns a lead id once its inbound webhook is mapped/live; hand it to
+  // the booking calendar so the booking ties to the lead record. Null while the
+  // webhook is still in sample-capture mode (booking then loads un-linked).
+  const leadId = optionalResults.map((r) => r.leadId).find(Boolean) || null;
 
   return json(
     {
       ok: requiredOk,
       program: program || null,
+      lead_id: leadId,
       required: requiredResults,
       optional: optionalResults,
     },
@@ -120,11 +125,11 @@ export default async (request) => {
 
 // ---- helpers ----
 
-function deliverAll(urls, payload) {
-  return Promise.all(urls.map((url) => deliver(url, payload)));
+function deliverAll(urls, payload, opts) {
+  return Promise.all(urls.map((url) => deliver(url, payload, opts)));
 }
 
-async function deliver(url, payload) {
+async function deliver(url, payload, opts = {}) {
   const target = label(url);
   if (!isAllowed(url)) {
     return { target, ok: false, status: 0, error: 'host_not_allowlisted' };
@@ -139,11 +144,42 @@ async function deliver(url, payload) {
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(OUTBOUND_TIMEOUT_MS),
     });
-    return { target, ok: res.ok, status: res.status };
+    const result = { target, ok: res.ok, status: res.status };
+    // Capture the lead id SPOS returns (once its webhook is mapped/live) so we
+    // can hand it to the booking calendar. Best-effort — never fails the deliver.
+    if (opts.wantBody && res.ok) result.leadId = await readLeadId(res);
+    return result;
   } catch (err) {
     const name = (err && (err.name || err.message)) || 'fetch_error';
     return { target, ok: false, status: 0, error: String(name) };
   }
+}
+
+// Best-effort extraction of a lead id from a webhook JSON response. SPOS returns
+// one once its inbound webhook is mapped (live); in sample-capture mode it
+// returns no id and this yields null (booking then loads without ?lead).
+async function readLeadId(res) {
+  let data;
+  try {
+    data = await res.json();
+  } catch (_e) {
+    return null;
+  }
+  return findLeadId(data);
+}
+
+function findLeadId(obj) {
+  if (!obj || typeof obj !== 'object') return null;
+  const pick = (o) => {
+    if (!o || typeof o !== 'object') return null;
+    for (const k of ['lead_id', 'leadId', 'id']) {
+      if (typeof o[k] === 'string' && o[k].trim()) return o[k].trim();
+      if (typeof o[k] === 'number') return String(o[k]);
+    }
+    return null;
+  };
+  if (typeof obj.lead === 'string' && obj.lead.trim()) return obj.lead.trim();
+  return pick(obj) || pick(obj.lead) || pick(obj.data) || pick(obj.result) || null;
 }
 
 function parseUrls(raw) {

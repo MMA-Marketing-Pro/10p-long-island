@@ -221,8 +221,10 @@
         setSubmitting(true);
         hideLeadError();
 
-        var redirect = function () {
-          window.location.href = 'booking.html?program=' + encodeURIComponent(program);
+        var redirect = function (leadId) {
+          var url = 'booking.html?program=' + encodeURIComponent(program);
+          if (leadId) url += '&lead=' + encodeURIComponent(leadId);
+          window.location.href = url;
         };
         var fail = function () {
           setSubmitting(false);
@@ -249,7 +251,7 @@
           })
           .then(function (result) {
             clearTimeout(timer);
-            if (result.httpOk && result.data && result.data.ok) redirect();
+            if (result.httpOk && result.data && result.data.ok) redirect(result.data.lead_id);
             else fail();
           })
           .catch(function () {
@@ -263,37 +265,17 @@
   // ---- Booking page ----
   function initBookingPage() {
     var params = new URLSearchParams(window.location.search);
-    var requested = params.get('program') || 'adult-no-gi';
 
-    var calendars = document.querySelectorAll('.booking-calendar');
-    var chips = document.querySelectorAll('.program-chip');
-
-    function activate(program) {
-      calendars.forEach(function (cal) {
-        if (cal.dataset.program === program) cal.classList.add('active');
-        else cal.classList.remove('active');
-      });
-      chips.forEach(function (chip) {
-        if (chip.dataset.program === program) chip.classList.add('active');
-        else chip.classList.remove('active');
-      });
-      var qs = new URLSearchParams(window.location.search);
-      qs.set('program', program);
-      history.replaceState(null, '', '?' + qs.toString());
+    // Point the Studio Profit OS booking calendar at this lead (when we have one)
+    // so the booking attaches to the lead record SPOS created from the form. The
+    // iframe ships with its base src, so it still works when no lead id is present.
+    var frame = document.getElementById('spos-booking');
+    if (frame) {
+      var base = frame.getAttribute('data-base-src') || frame.src;
+      var lead = params.get('lead');
+      var nextSrc = lead ? base + '?lead=' + encodeURIComponent(lead) : base;
+      if (frame.src !== nextSrc) frame.src = nextSrc;
     }
-
-    // Try the requested program, fall back to the first one available
-    var requestedExists = !!document.querySelector('.booking-calendar[data-program="' + requested + '"]');
-    if (requestedExists) activate(requested);
-    else if (calendars.length) activate(calendars[0].dataset.program);
-
-    chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        activate(chip.dataset.program);
-        var scrollTarget = document.querySelector('.booking-calendars');
-        if (scrollTarget) scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
 
     // Display lead name if captured
     var greeting = document.getElementById('booking-greeting');
