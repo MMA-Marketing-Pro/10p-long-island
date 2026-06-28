@@ -33,9 +33,13 @@ const FALLBACK = {
     'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/26d5c4a4-befa-4aca-9252-d7d8078fdbf0',
     'https://services.leadconnectorhq.com/hooks/UrcblURsSj7egEPfYXhH/webhook-trigger/302de1d1-849a-4f42-9c1e-8d897ae1df7b',
   ].join(','),
-  // Studio Profit OS — adult Jiu-Jitsu inbound webhook (secondary / analytics)
+  // Studio Profit OS — per-program inbound webhooks (secondary / analytics)
   SPOS_ADULT_WEBHOOK:
     'https://app.studioprofitos.io/api/webhooks/inbound/41c14782-2f75-4d5f-9ba5-33aa6adfd5d4',
+  SPOS_KIDS_8_12_WEBHOOK:
+    'https://app.studioprofitos.io/api/webhooks/inbound/7e0349ba-563f-4def-ba8f-e810eef39ee3',
+  SPOS_KIDS_5_7_WEBHOOK:
+    'https://app.studioprofitos.io/api/webhooks/inbound/4a0c98f3-7793-4832-b9a1-0d0a86c05aaf',
 };
 
 const OUTBOUND_TIMEOUT_MS = 8000;
@@ -75,20 +79,26 @@ export default async (request) => {
   const payload = { ...body };
   delete payload.website;
 
-  // Route by program family.
-  const adult = parseUrls(process.env.GHL_ADULT_WEBHOOKS ?? FALLBACK.GHL_ADULT_WEBHOOKS);
-  const kids = parseUrls(process.env.GHL_KIDS_WEBHOOKS ?? FALLBACK.GHL_KIDS_WEBHOOKS);
-  const sposAdult = parseUrls(process.env.SPOS_ADULT_WEBHOOK ?? FALLBACK.SPOS_ADULT_WEBHOOK);
+  // Route by program. GHL hooks are the CRM of record (required → must land before
+  // the booking redirect); the matching SPOS inbound webhook is secondary
+  // (optional → best-effort, never blocks the booking flow). An unknown/empty
+  // program maps to nothing — no webhooks fire, still ok (parity with prior behavior).
+  const ghlAdult = process.env.GHL_ADULT_WEBHOOKS ?? FALLBACK.GHL_ADULT_WEBHOOKS;
+  const ghlKids = process.env.GHL_KIDS_WEBHOOKS ?? FALLBACK.GHL_KIDS_WEBHOOKS;
 
-  let required = [];
-  let optional = [];
-  if (program === 'adult-no-gi') {
-    required = adult; // GHL is the CRM of record → must land before redirect
-    optional = sposAdult; // SPOS is secondary → best-effort, never blocks the booking flow
-  } else if (program === 'kids-8-12' || program === 'kids-5-7') {
-    required = kids;
-  }
-  // Unknown/empty program → no webhooks (parity with prior behavior); still ok.
+  const GHL_BY_PROGRAM = {
+    'adult-no-gi': ghlAdult,
+    'kids-8-12': ghlKids,
+    'kids-5-7': ghlKids,
+  };
+  const SPOS_BY_PROGRAM = {
+    'adult-no-gi': process.env.SPOS_ADULT_WEBHOOK ?? FALLBACK.SPOS_ADULT_WEBHOOK,
+    'kids-8-12': process.env.SPOS_KIDS_8_12_WEBHOOK ?? FALLBACK.SPOS_KIDS_8_12_WEBHOOK,
+    'kids-5-7': process.env.SPOS_KIDS_5_7_WEBHOOK ?? FALLBACK.SPOS_KIDS_5_7_WEBHOOK,
+  };
+
+  const required = parseUrls(GHL_BY_PROGRAM[program]);
+  const optional = parseUrls(SPOS_BY_PROGRAM[program]);
 
   const [requiredResults, optionalResults] = await Promise.all([
     deliverAll(required, payload),
