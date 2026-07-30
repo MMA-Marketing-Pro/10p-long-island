@@ -531,8 +531,11 @@ src="https://www.facebook.com/tr?id=1268713635181057&ev=PageView&noscript=1"
       var vh = window.innerHeight;
       var pastHero = heroBottom < 80;
       var nearFinal = finalTop < vh * 0.75;
-      if (pastHero && !nearFinal) sticky.classList.add('is-visible');
-      else sticky.classList.remove('is-visible');
+      var show = pastHero && !nearFinal;
+      sticky.classList.toggle('is-visible', show);
+      // Flag when the bottom sticky CTA is active so we can hide the duplicate
+      // CTA in the top nav on mobile (see .sticky-on rule in styles.css).
+      document.body.classList.toggle('sticky-on', show);
     }
     update();
     window.addEventListener('scroll', update, { passive: true });
