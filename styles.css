@@ -3412,3 +3412,99 @@ body[data-page="free-trial"] .lp-form-trust {
 @media (max-width: 900px) {
   body[data-page="free-trial"] .footer { padding-bottom: 100px; }
 }
+
+/* =========================================================================
+   KIDS LANDING — DARK THEME VARIANT
+   Reuses the landing-page (lt-) template but on the main site's dark navy
+   palette so it matches the rest of 10plongisland.com. Keeps the default
+   :root dark tokens and only re-adds the landing layout rules + overrides
+   the few hardcoded WHITE backgrounds in the template.
+   ========================================================================= */
+
+/* Landing layout rules (mirrors the free-trial template, colors excluded) */
+body[data-page="kids-landing"] .section { padding-block: clamp(72px, 9vw, 128px); }
+body[data-page="kids-landing"] .lt-h2 {
+  font-size: clamp(1.85rem, 4.4vw, 3.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  margin-top: 18px;
+}
+body[data-page="kids-landing"] .lt-h2 .accent { color: var(--accent); }
+body[data-page="kids-landing"] .lead { color: var(--muted); }
+body[data-page="kids-landing"] .lp-form-trust { color: var(--muted); }
+
+/* Dark overrides of the template's hardcoded light backgrounds */
+body[data-page="kids-landing"] .lt-nav {
+  background: rgba(10, 14, 26, 0.85);
+  border-bottom-color: var(--border);
+}
+body[data-page="kids-landing"] .lt-hero {
+  background:
+    radial-gradient(ellipse 100% 70% at 50% -10%, rgba(24,139,246,0.14), transparent 55%),
+    var(--bg);
+}
+body[data-page="kids-landing"] .lt-barrier-col--no {
+  background: rgba(201, 87, 87, 0.09);
+  border-color: rgba(201, 87, 87, 0.28);
+}
+body[data-page="kids-landing"] .lt-barrier-col--yes {
+  background: var(--accent-subtle);
+  border-color: rgba(24, 139, 246, 0.30);
+}
+body[data-page="kids-landing"] .lt-sticky {
+  background: rgba(10, 14, 26, 0.92);
+  border-top-color: var(--border);
+}
+
+/* Subtle card separation on dark (light template relied on drop shadows) */
+body[data-page="kids-landing"] .testimonial,
+body[data-page="kids-landing"] .faq {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  body[data-page="kids-landing"] .footer { padding-bottom: 100px; }
+}
+
+/* Make the "you don't need" cross-outs read clearly on dark */
+body[data-page="kids-landing"] .lt-barrier-list--no li {
+  color: #C7CEDB;
+  text-decoration-color: #E5654F;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 1px;
+}
+body[data-page="kids-landing"] .lt-barrier-list--no i,
+body[data-page="kids-landing"] .lt-barrier-list--no svg { color: #E5654F; }
+
+/* Kids schedule — two centered cards, centered content */
+body[data-page="kids-landing"] .kids-schedule-grid {
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
+  max-width: none;
+}
+body[data-page="kids-landing"] .kids-schedule-grid .lt-benefit-card {
+  text-align: center;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  body[data-page="kids-landing"] .kids-schedule-grid { grid-template-columns: minmax(0, 360px); }
+}
+
+/* Kids photo band */
+body[data-page="kids-landing"] .kids-photo-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 2vw, 20px);
+}
+body[data-page="kids-landing"] .kids-photo-band img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  filter: contrast(1.05) saturate(1.05);
+}
+@media (max-width: 640px) {
+  body[data-page="kids-landing"] .kids-photo-band { grid-template-columns: 1fr; }
+}
