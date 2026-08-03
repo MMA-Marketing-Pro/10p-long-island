@@ -4,7 +4,7 @@
 - **Name:** 10th Planet Jiu Jitsu Long Island (10PLI)
 - **Type:** No-gi jiu-jitsu academy — 10th Planet system affiliate
 - **Location:** 601 Old Willets Path, Hauppauge, NY 11788
-- **Phone:** (631) 848-5851 · **Email:** staff@10plongisland.com
+- **Phone:** (631) 848-5851 · **Email:** 10plongisland@gmail.com
 - **Head Coach:** Steve (also Coach Dylan mentioned by students)
 - **Target:** Teens and adults, kids ages 5–12, masters 35+ — effectively ages 4 to 65+
 - **Hero offer:** FREE intro class → 8-week Beginner Course
