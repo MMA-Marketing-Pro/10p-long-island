@@ -166,7 +166,7 @@
         },
         {
           "name": "MMA (Advanced & Beginner)",
-          "description": "Blend your jiu-jitsu with striking. Beginner MMA on Sunday afternoons and Advanced MMA on Friday nights — both taught by coaches who understand the full game.",
+          "description": "Blend your jiu-jitsu with striking. Beginner MMA on Sunday mornings and Advanced MMA on Friday nights — both taught by coaches who understand the full game.",
           "cta": "Try a Free Class Today"
         },
         {
@@ -198,6 +198,7 @@
             {"time": "5:30 PM", "name": "Kids 5–7"},
             {"time": "6:00 PM", "name": "Intro Class (by appt.)"},
             {"time": "6:30 PM", "name": "Adult Fundamentals"},
+            {"time": "6:30 PM", "name": "Teens 13+"},
             {"time": "7:30 PM", "name": "Open Mat"}
           ]
         },
@@ -219,6 +220,7 @@
             {"time": "5:30 PM", "name": "Kids 5–7"},
             {"time": "6:00 PM", "name": "Intro Class (by appt.)"},
             {"time": "6:30 PM", "name": "Adult Fundamentals"},
+            {"time": "6:30 PM", "name": "Teens 13+"},
             {"time": "7:30 PM", "name": "Open Mat"}
           ]
         },
@@ -236,6 +238,7 @@
           "classes": [
             {"time": "8:30 AM", "name": "Intro Class (by appt.)"},
             {"time": "9:00 AM", "name": "Adult Mixed Level"},
+            {"time": "9:00 AM", "name": "Teens 13+"},
             {"time": "10:15 AM", "name": "Kids 8–12"},
             {"time": "11:15 AM", "name": "Kids 5–7"}
           ]
@@ -245,8 +248,8 @@
           "classes": [
             {"time": "8:00 AM", "name": "Masters 35+ Jiu-Jitsu"},
             {"time": "10:00 AM", "name": "Jiu-Jitsu Striking"},
-            {"time": "11:00 AM", "name": "Open Mat"},
-            {"time": "12:00 PM", "name": "Beginner MMA"}
+            {"time": "10:00 AM", "name": "Beginner MMA"},
+            {"time": "11:00 AM", "name": "Open Mat"}
           ]
         }
       ]

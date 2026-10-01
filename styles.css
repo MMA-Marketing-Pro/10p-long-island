@@ -1187,6 +1187,7 @@ body[data-page="schedule"] .page-header-bg::after {
   line-height: 1.25;
 }
 .schedule-class[data-type="kids"] { border-left: 3px solid #ffb14d; padding-left: 12px; }
+.schedule-class[data-type="teens"] { border-left: 3px solid #4dc9ff; padding-left: 12px; }
 .schedule-class[data-type="mma"] { border-left: 3px solid #ff5a5a; padding-left: 12px; }
 .schedule-class[data-type="masters"] { border-left: 3px solid #a88aff; padding-left: 12px; }
 .schedule-class[data-type="intro"] { border-left: 3px solid var(--accent); padding-left: 12px; }
@@ -1207,6 +1208,7 @@ body[data-page="schedule"] .page-header-bg::after {
 .schedule-legend span { display: inline-flex; align-items: center; gap: 8px; }
 .schedule-legend span::before { content: ''; width: 12px; height: 12px; border-radius: 2px; background: var(--accent); }
 .schedule-legend span[data-type="kids"]::before { background: #ffb14d; }
+.schedule-legend span[data-type="teens"]::before { background: #4dc9ff; }
 .schedule-legend span[data-type="mma"]::before { background: #ff5a5a; }
 .schedule-legend span[data-type="masters"]::before { background: #a88aff; }
 .schedule-legend span[data-type="openmat"]::before { background: #6bffc0; }

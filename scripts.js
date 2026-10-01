@@ -207,7 +207,7 @@
           if (typeof window.fbq === 'function') {
             window.fbq('track', 'Lead', {
               content_name: program,
-              content_category: program.indexOf('kids') === 0 ? 'kids' : 'adult',
+              content_category: program.indexOf('kids') === 0 ? 'kids' : program.indexOf('teens') === 0 ? 'teens' : 'adult',
               source_page: location.pathname
             });
           }

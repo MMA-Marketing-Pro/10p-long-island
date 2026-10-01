@@ -40,6 +40,10 @@ const FALLBACK = {
     'https://app.studioprofitos.io/api/webhooks/inbound/7e0349ba-563f-4def-ba8f-e810eef39ee3',
   SPOS_KIDS_5_7_WEBHOOK:
     'https://app.studioprofitos.io/api/webhooks/inbound/4a0c98f3-7793-4832-b9a1-0d0a86c05aaf',
+  SPOS_TEENS_WEBHOOK:
+    'https://app.studioprofitos.io/api/webhooks/inbound/450022f0-87b3-4dfd-a289-262b8b1aaecf',
+  // Teens 13+ has no dedicated GHL pipeline yet, so it falls back to the kids
+  // hooks. Set GHL_TEENS_WEBHOOKS once the teen pipeline exists.
 };
 
 const OUTBOUND_TIMEOUT_MS = 8000;
@@ -85,16 +89,19 @@ export default async (request) => {
   // program maps to nothing — no webhooks fire, still ok (parity with prior behavior).
   const ghlAdult = process.env.GHL_ADULT_WEBHOOKS ?? FALLBACK.GHL_ADULT_WEBHOOKS;
   const ghlKids = process.env.GHL_KIDS_WEBHOOKS ?? FALLBACK.GHL_KIDS_WEBHOOKS;
+  const ghlTeens = process.env.GHL_TEENS_WEBHOOKS ?? ghlKids;
 
   const GHL_BY_PROGRAM = {
     'adult-no-gi': ghlAdult,
     'kids-8-12': ghlKids,
     'kids-5-7': ghlKids,
+    'teens-13': ghlTeens,
   };
   const SPOS_BY_PROGRAM = {
     'adult-no-gi': process.env.SPOS_ADULT_WEBHOOK ?? FALLBACK.SPOS_ADULT_WEBHOOK,
     'kids-8-12': process.env.SPOS_KIDS_8_12_WEBHOOK ?? FALLBACK.SPOS_KIDS_8_12_WEBHOOK,
     'kids-5-7': process.env.SPOS_KIDS_5_7_WEBHOOK ?? FALLBACK.SPOS_KIDS_5_7_WEBHOOK,
+    'teens-13': process.env.SPOS_TEENS_WEBHOOK ?? FALLBACK.SPOS_TEENS_WEBHOOK,
   };
 
   const required = parseUrls(GHL_BY_PROGRAM[program]);
